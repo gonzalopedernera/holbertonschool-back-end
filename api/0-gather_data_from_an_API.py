@@ -13,12 +13,12 @@ if __name__ == '__main__':
 
     employee = requests.get(
             f'https://jsonplaceholder.typicode.com/users/{id}'
-            ).json()
+            )
     employee_to_do = requests.get(
             f'https://jsonplaceholder.typicode.com/users/{id}/todos'
-            ).json()
+            )
 
-    for task in employee_to_do:
+    for task in employee_to_do.json():
         if task.get('completed') is True:
             task_done += 1
             total_task += 1
@@ -26,7 +26,7 @@ if __name__ == '__main__':
         else:
             total_task += 1
 
-    name = employee['name']
+    name = employee.json()['name']
 
     print(
         f"Employee {name} is done with tasks({task_done}/{total_task}):")
